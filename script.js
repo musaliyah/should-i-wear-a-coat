@@ -70,6 +70,21 @@ function week(lat, lon) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        $('')
+        $('#weatherWeek').empty();
+
+        for(let i=1; i<6; i++) {
+            var cityWeather  = {
+                date: response.daily[i].dt,
+                temp: response.daily[i].weather[0].icon,
+                icon: response.daily[i].temp.day,
+                humidity: response.daily[i].humidity
+            };
+
+            var weatherIcon = `<img src="https://openweathermap.org/img/w/${cityWeather.icon}.png" alt="${response.daily[i].weather[0].main}" />`
+
+            var weatherCard = $(`
+        
+            `)
+        }
     })
 }
