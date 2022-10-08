@@ -17,5 +17,14 @@ function todaysWeather(city) {
         var icon = response.weather[0].icon;
         var iconsUrl = `https://openweathermap.org/img/w/${icon}.png`;
 
+        var presentSearch = $(`
+            <h2 id= "presentSearch">
+                $(response.name) ${today} <img src="${iconsURL}" />
+            </h2>
+
+            <p>Temperature: ${response.main.temp}</p>
+            <p>Humidity: ${response.main.humidity}</p>
+            <p>Wind Speed: ${response.wind.speed}</p>
+        `)
     })
 }
