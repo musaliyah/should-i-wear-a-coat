@@ -83,8 +83,17 @@ function week(lat, lon) {
             var weatherIcon = `<img src="https://openweathermap.org/img/w/${cityWeather.icon}.png" alt="${response.daily[i].weather[0].main}" />`
 
             var weatherCard = $(`
-        
-            `)
+            <div class="pl-3">
+                <div class="card pl-3 pt-3 mb-3 bg-primary" style="width: 12rem;>
+                    <div class="card-body">
+                        <p>${weatherIcon}</p>
+                        <p>Temp: ${cityWeather.temp}</p>
+                        <p>Humidity: ${cityWeather.humidity}</p>
+                    </div>
+                <div>
+            </div>
+            `);
+            $('#weatherWeek').append(weatherCard);
         }
-    })
+    });
 }
