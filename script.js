@@ -25,6 +25,51 @@ function todaysWeather(city) {
             <p>Temperature: ${response.main.temp}</p>
             <p>Humidity: ${response.main.humidity}</p>
             <p>Wind Speed: ${response.wind.speed}</p>
-        `)
+        `);
+
+        $("#cityInfo").append(presentSearch);
+
+        var lat = response.coord.lat;
+        var lon = response.coord.lon;
+        var uviURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+        $.ajax({
+            url: uviURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+
+            var uvi = response.value;
+            var uviDisplay = $(`<p>UV Index: <span id="uviColor class="px-2 py-2 rounded">${uvi}</span></p>`);
+
+            $("cityInfo").append(uviDisplay);
+
+            week(lat, lon);
+
+
+            if(uvi >= 0 && uvi <=2) {
+                $("#uviColor").css("background-color", "green").css("color", "white");
+            } else if (uvi >= 3 && uvi <= 5) {
+                $("#uviColor").css("background-color", "yellow");
+            } else if (uvi >= 6 && uvi <= 7) {
+                $("#uviColor").css("background-color", "orange");
+            } else if (uvi >= 8 && uvi <= 10) {
+                $("#uviColor").css("background-color", "red").css("color", "white");
+            } else {
+                $("#uviColor").css("background-color", "purple").css("color", "white");
+            };
+        });
+    });
+}
+
+function week(lat, lon) {
+    var weekURL= `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
+
+    $ajax({
+        url: weekURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        $('')
     })
 }
