@@ -97,3 +97,24 @@ function week(lat, lon) {
         }
     });
 }
+
+$("searchBtn").on("click", function(event) {
+    event.preventDefault();
+    
+    var city = $('#citySearch').val().trim();
+    todaysWeather(city);
+
+    if(!searchHistory.includes(city)) {
+        searchHistory.push(city);
+        var input = $(`<li class="list-group-item">${city}</li>`);
+    }
+        localStorage.setItem("city", JSON.stringify(searchHistory));
+        console.log(searchHistory); 
+});
+
+$(document).on("click", ".list-group-item", function() {
+    var pastCity = $(this).text();
+    todaysWeather(pastCity);
+});
+
+$(document).ready(function)
