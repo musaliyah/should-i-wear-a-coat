@@ -22,9 +22,9 @@ function todaysWeather(city) {
                 ${response.name} ${today} <img src="${iconsUrl}" />
             </h2>
 
-            <p>Temperature: ${response.main.temp}</p>
-            <p>Humidity: ${response.main.humidity}</p>
-            <p>Wind Speed: ${response.wind.speed}</p>
+            <p>Temperature: ${response.main.temp} °F</p>
+            <p>Humidity: ${response.main.humidity} %</p>
+            <p>Wind Speed: ${response.wind.speed} mph</p>
         `);
 
         $("#cityInfo").append(presentSearch);
@@ -78,7 +78,7 @@ function week(lat, lon) {
                 temp: response.daily[i].temp.day,
                 icon: response.daily[i].weather[0].icon,
                 humidity: response.daily[i].humidity,
-                wind: response.daily[i].wind.speed
+                // wind: response.daily[i].weather[0].wind_speed
             };
 
             var weatherIcon = `<img src="https://openweathermap.org/img/wn/${cityWeather.icon}.png" alt="${response.daily[i].weather[0].main}" />`;
@@ -90,7 +90,7 @@ function week(lat, lon) {
                         <p>${weatherIcon}</p>
                         <p>Temp: ${cityWeather.temp} °F </p>
                         <p>Humidity: ${cityWeather.humidity} %</p>
-                        <p>Wind Speed: ${cityWeather.wind} mph</p>
+                        
                     </div>
                 <div>
             </div>
