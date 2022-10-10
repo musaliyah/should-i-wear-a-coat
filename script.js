@@ -19,7 +19,7 @@ function todaysWeather(city) {
 
         var presentSearch = $(`
             <h2 id= "presentSearch">
-                $(response.name) ${today} <img src="${iconsURL}" />
+                ${response.name} ${today} <img src="${iconsUrl}" />
             </h2>
 
             <p>Temperature: ${response.main.temp}</p>
@@ -65,7 +65,7 @@ function todaysWeather(city) {
 function week(lat, lon) {
     var weekURL= `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
 
-    $ajax({
+    $.ajax({
         url: weekURL,
         method: "GET"
     }).then(function (response) {
@@ -98,7 +98,7 @@ function week(lat, lon) {
     });
 }
 
-$("searchBtn").on("click", function(event) {
+$("#searchBtn").on("click", function(event) {
     event.preventDefault();
     
     var city = $('#citySearch').val().trim();
