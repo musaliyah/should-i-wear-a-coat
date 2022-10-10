@@ -75,9 +75,10 @@ function week(lat, lon) {
         for(let i=1; i<6; i++) {
             var cityWeather  = {
                 date: response.daily[i].dt,
-                temp: response.daily[i].weather[0].icon,
-                icon: response.daily[i].temp.day,
-                humidity: response.daily[i].humidity
+                temp: response.daily[i].temp.day,
+                icon: response.daily[i].weather[0].icon,
+                humidity: response.daily[i].humidity,
+                wind: response.daily[i].wind.speed
             };
 
             var weatherIcon = `<img src="https://openweathermap.org/img/wn/${cityWeather.icon}.png" alt="${response.daily[i].weather[0].main}" />`;
@@ -87,8 +88,9 @@ function week(lat, lon) {
                 <div class="card pl-3 pt-3 mb-3 bg-primary" style="width: 12rem;>
                     <div class="card-body">
                         <p>${weatherIcon}</p>
-                        <p>Temp: ${cityWeather.temp}</p>
-                        <p>Humidity: ${cityWeather.humidity}</p>
+                        <p>Temp: ${cityWeather.temp} °F </p>
+                        <p>Humidity: ${cityWeather.humidity} %</p>
+                        <p>Wind Speed: ${cityWeather.wind} mph</p>
                     </div>
                 <div>
             </div>
