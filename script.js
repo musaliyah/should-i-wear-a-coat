@@ -80,7 +80,7 @@ function week(lat, lon) {
                 humidity: response.daily[i].humidity
             };
 
-            var weatherIcon = `<img src="https://openweathermap.org/img/w/${cityWeather.icon}.png" alt="${response.daily[i].weather[0].main}" />`
+            var weatherIcon = `<img src="https://openweathermap.org/img/wn/${cityWeather.icon}.png" alt="${response.daily[i].weather[0].main}" />`;
 
             var weatherCard = $(`
             <div class="pl-3">
