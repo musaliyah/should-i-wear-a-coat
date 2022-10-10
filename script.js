@@ -117,4 +117,13 @@ $(document).on("click", ".list-group-item", function() {
     todaysWeather(pastCity);
 });
 
-$(document).ready(function)
+$(document).ready(function() {
+    var pastSearchesArr = JSON.parse(localStorage.getItem("city"));
+
+    if(pastSearchesArr !== null) {
+        var searchLocation = pastSearchesArr.length -1;
+        var searchCity = pastSearchesArr[searchLocation];
+        todaysWeather(searchCity);
+        console.log(`Most recently searched: ${searchCity}`);
+    }
+});
